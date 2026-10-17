@@ -97,7 +97,8 @@
 #define PATCH_SCALE (4.0f * MAP_XY_FACTOR)	//horizontal scale factor. Adjust this and size to get desired vertex density.
 #define SEA_REFLECTION_SIZE 256		//dimensions of reflection texture
 // GeneralsX @feature BenderAI 08/10/2026 Water reflection constants from Reforged
-#define WATER_REFLECTION_SIZE 512	//dimensions of the reflection texture laid over map water
+// GeneralsX @tweak msmit 17/10/2026 1024 reflection texels: 512 blurs when stretched over a 1080p+ water area
+#define WATER_REFLECTION_SIZE 1024	//dimensions of the reflection texture laid over map water
 #define WATER_REFLECTION_AREA_MARGIN 0.05f	//slack around the water's screen area, so filtering at its edge reads inside it
 // GeneralsX @tweak fbraz3 08/10/2026 Softened reflection strength from 0.55f to 0.35f for natural translucent water
 #define WATER_REFLECTION_STRENGTH 0.35f	//how far a reflected object darkens the water under it
@@ -940,7 +941,7 @@ void WaterRenderObjClass::ReAcquireResources()
 	}
 	else if (m_waterType == WATER_TYPE_0_TRANSLUCENT)
 	{
-		// GeneralsX @feature BenderAI 08/10/2026 Create 512x512 reflection render target for map rivers and lakes with matching depth buffer
+		// GeneralsX @feature BenderAI 08/10/2026 Create reflection render target for map rivers and lakes with matching depth buffer
 		DX8Wrapper::Create_Render_Target (WATER_REFLECTION_SIZE, WATER_REFLECTION_SIZE, WW3D_FORMAT_UNKNOWN, WW3D_ZFORMAT_UNKNOWN, &m_pReflectionTexture, &m_pReflectionZTexture);
 	}
 
