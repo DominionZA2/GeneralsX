@@ -80,6 +80,7 @@ Generals/logs/
 # Release bundles
 GeneralsX-macos-*.zip
 GeneralsXZH-macos-*.zip
+macos-arm64-GeneralsXZH.zip
 GeneralsX-linux-*.tar.gz
 GeneralsXZH-linux-*.tar.gz
 
